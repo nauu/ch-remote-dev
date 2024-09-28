@@ -8,5 +8,5 @@ services:
     ports:
       - "127.0.0.1:2222:22"
     volumes:
-      - /Users/nauu/CLionProjects/clickhouse-private:/home/ch-builder/clickhouse
+      - .:/home/ch-builder/clickhouse
     restart: unless-stopped
