@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+  ch-remote:
+    image: kai/ch-remote-dev:1.0
+    build: .
+    container_name: ch-remote-dev
+    ports:
+      - "127.0.0.1:2222:22"
+    volumes:
+      - /Users/nauu/CLionProjects/clickhouse-private:/home/ch-builder/clickhouse
+    restart: unless-stopped
