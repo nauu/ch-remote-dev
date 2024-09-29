@@ -7,6 +7,9 @@ services:
     container_name: ch-remote-dev
     ports:
       - "127.0.0.1:2222:22"
+      - "127.0.0.1:9015:9000"
+      - "127.0.0.1:8115:8123"
     volumes:
-      - .:/home/ch-builder/clickhouse
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/nauu/CLionProjects/clickhouse-private:/home/ch-builder/clickhouse
     restart: unless-stopped
