@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.authors="zhukai@apache.org"
 RUN apt-get update
 
 RUN apt-get install -y git cmake ccache python3 ninja-build nasm yasm gawk lsb-release wget
-RUN apt-get install -y software-properties-common gnupg
+RUN apt-get install -y software-properties-common gnupg iputils-ping
 RUN apt-get install -y gdb gdbserver
 RUN apt-get install -y openssh-server
 RUN apt-get install -y net-tools lsof
@@ -55,7 +55,8 @@ RUN pip3 install --no-cache-dir \
     hypothesis \
     pyhdfs \
     pika \
-    nats-py
+    nats-py \
+    jinja2
 
 
 RUN mkdir /var/run/sshd
@@ -67,6 +68,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 EXPOSE 22
 

@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  ch-oss-remote:
+    image: kai/ch-oss-remote-dev:1.0
+    build: .
+    container_name: ch-oss-remote-dev
+    ports:
+      - "127.0.0.1:6666:22"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/nauu/CLionProjects/ClickHouse:/home/ch-builder/clickhouse
+      - /Users/nauu/CLionProjects/ClickHouse/programs/server/keeper_config.xml:/etc/clickhouse-server/keeper_config.xml
+      - /Users/nauu/CLionProjects/ClickHouse/programs/server/users.xml:/etc/clickhouse-server/users.xml
+      - /Users/nauu/Downloads/Work/Code/Storage4docker/oss/log:/var/log/clickhouse-server
+      - /Users/nauu/Downloads/Work/Code/Storage4docker/oss/cache:/var/lib/clickhouse/cache
+    restart: unless-stopped
