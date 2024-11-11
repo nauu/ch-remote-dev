@@ -11,7 +11,7 @@ RUN apt-get install -y net-tools lsof
 RUN apt-get install -y python3-pip libpq-dev zlib1g-dev libcrypto++-dev libssl-dev libkrb5-dev python3-dev iptables
 RUN apt-get install -y \
     ca-certificates \
-    curl \
+    curl vim\
     gnupg \
     lsb-release && \
     echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list && \

@@ -8,10 +8,13 @@ services:
     ports:
       - "127.0.0.1:6666:22"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       - /Users/nauu/CLionProjects/ClickHouse:/home/ch-builder/clickhouse
-      - /Users/nauu/CLionProjects/ClickHouse/programs/server/keeper_config.xml:/etc/clickhouse-server/keeper_config.xml
       - /Users/nauu/CLionProjects/ClickHouse/programs/server/users.xml:/etc/clickhouse-server/users.xml
-      - /Users/nauu/Downloads/Work/Code/Storage4docker/oss/log:/var/log/clickhouse-server
-      - /Users/nauu/Downloads/Work/Code/Storage4docker/oss/cache:/var/lib/clickhouse/cache
+      - /Users/nauu/Downloads/OpenSource/Storage4docker/oss/log:/var/log/clickhouse-server
+      - /Users/nauu/Downloads/OpenSource/Storage4docker/oss/cache:/var/lib/clickhouse/cache
+    ulimits:
+      nproc: 65535
+      nofile:
+        hard: 65535
+        soft: 65535
     restart: unless-stopped

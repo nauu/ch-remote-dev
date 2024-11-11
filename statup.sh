@@ -19,13 +19,21 @@ cd /home/ch-builder/clickhouse/cmake-build-debug-ch-docker/programs && \
 
 
 #How to run integration test
+# build clickhouse-library-bridge and clickhouse-odbc-bridge
 #in host
 #cd /Users/nauu/CLionProjects/clickhouse-private/tests/integration/
 #or  /Users/nauu/CLionProjects/clickhouse-private/tests/integration/runner
-export CLICKHOUSE_TESTS_BASE_CONFIG_DIR=/Users/nauu/CLionProjects/clickhouse-private/programs/server/ Users/nauu/CLionProjects/clickhouse-private/cmake-build-debug-ch-docker/programs/clickhouse
+cd /Users/nauu/CLionProjects/ClickHouse/tests/integration/ && \
+export CLICKHOUSE_TESTS_BASE_CONFIG_DIR=/Users/nauu/CLionProjects/clickhouse-private/programs/server/ \
 export CLICKHOUSE_TESTS_SERVER_BIN_PATH=/Users/nauu/CLionProjects/clickhouse-private/cmake-build-debug-ch-docker/programs/clickhouse && \
 export CLICKHOUSE_TESTS_ODBC_BRIDGE_BIN_PATH=/Users/nauu/CLionProjects/clickhouse-private/cmake-build-debug-ch-docker/programs/ && \
 ./runner --ignore-iptables-legacy-check 'test_packed_io' 
+
+cd /Users/nauu/CLionProjects/ClickHouse/tests/integration/ && \
+export CLICKHOUSE_TESTS_BASE_CONFIG_DIR=/Users/nauu/CLionProjects/ClickHouse/programs/server/ && \
+export CLICKHOUSE_TESTS_SERVER_BIN_PATH=/Users/nauu/CLionProjects/ClickHouse/cmake-build-debug-ch-docker/programs/clickhouse && \
+export CLICKHOUSE_TESTS_ODBC_BRIDGE_BIN_PATH=/Users/nauu/CLionProjects/ClickHouse/cmake-build-debug-ch-docker/programs/ && \
+./runner --ignore-iptables-legacy-check 'test_atomic_drop_table'
 
 
 #How to run unitest
