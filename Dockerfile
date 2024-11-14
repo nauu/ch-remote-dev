@@ -3,15 +3,15 @@ LABEL org.opencontainers.image.authors="zhukai@apache.org"
 
 RUN apt-get update
 
-RUN apt-get install -y git cmake ccache python3 ninja-build nasm yasm gawk lsb-release wget
-RUN apt-get install -y software-properties-common gnupg iputils-ping
+RUN apt-get install -y git cmake ccache python3 ninja-build nasm yasm gawk lsb-release wget clang-tidy
+RUN apt-get install -y software-properties-common gnupg iputils-ping vim
 RUN apt-get install -y gdb gdbserver
 RUN apt-get install -y openssh-server
 RUN apt-get install -y net-tools lsof
 RUN apt-get install -y python3-pip libpq-dev zlib1g-dev libcrypto++-dev libssl-dev libkrb5-dev python3-dev iptables
 RUN apt-get install -y \
     ca-certificates \
-    curl vim\
+    curl\
     gnupg \
     lsb-release && \
     echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list && \
